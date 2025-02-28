@@ -10,10 +10,10 @@ import ru.practicum.shareit.user.model.User;
 import java.util.*;
 
 @Service
-public class UserRepositoryImp implements UserRepository{
+public class UserRepositoryImp implements UserRepository {
     Map<Long, User> users = new HashMap<>();
 
-    public Collection<User> findAll(){
+    public Collection<User> findAll() {
         return users.values();
     }
 
@@ -22,8 +22,8 @@ public class UserRepositoryImp implements UserRepository{
     }
 
     public User create(User user) {
-        for(User u : users.values()){
-            if(u.getEmail().equals(user.getEmail())) throw new DuplicatedDataException("Email уже используется");
+        for (User u : users.values()) {
+            if (u.getEmail().equals(user.getEmail())) throw new DuplicatedDataException("Email уже используется");
         }
         user.setId(getId());
         users.put(user.getId(), user);
@@ -51,7 +51,7 @@ public class UserRepositoryImp implements UserRepository{
     }
 
     public void delete(long id) {
-        if(!users.containsKey(id)) throw new ValidationException("Пользователь  с id: " + id + " не найден");
+        if (!users.containsKey(id)) throw new ValidationException("Пользователь  с id: " + id + " не найден");
         users.remove(id);
     }
 

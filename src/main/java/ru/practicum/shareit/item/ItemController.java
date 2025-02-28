@@ -1,8 +1,10 @@
 package ru.practicum.shareit.item;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.item.dto.ItemDto;
+import ru.practicum.shareit.item.dto.ItemUpdateDto;
 
 import java.util.List;
 
@@ -10,6 +12,7 @@ import java.util.List;
  * TODO Sprint add-controllers.
  */
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/items")
 public class ItemController {
     private final ItemService itemService;
@@ -20,7 +23,7 @@ public class ItemController {
     }
 
     @PatchMapping("/{itemId}")
-    public ItemDto updateItem(@PathVariable Integer itemId, @RequestBody ItemDto item,
+    public ItemDto updateItem(@PathVariable Integer itemId, @RequestBody ItemUpdateDto item,
                               @RequestHeader("X-Sharer-User-Id") Integer userId) {
         return itemService.updateItem(itemId, item, userId);
     }
