@@ -18,7 +18,13 @@ public class UserRepositoryImp implements UserRepository {
     }
 
     public Optional<User> getUser(long id) {
-        return Optional.of(users.get(id));
+        User user = users.get(id);
+
+        if (user == null) {
+            throw new NotFoundException("Пользователь с id " + id + " не найден");
+        }
+
+        return Optional.of(user);
     }
 
     public User create(User user) {

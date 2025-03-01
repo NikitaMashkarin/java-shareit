@@ -13,22 +13,22 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
 
     @Override
-    public ItemDto addItem(ItemDto itemDtoRequest, Integer userId) {
+    public ItemDto addItem(ItemDto itemDtoRequest, Long userId) {
         return itemRepository.addItem(itemDtoRequest, userId);
     }
 
     @Override
-    public ItemDto updateItem(Integer itemId, ItemUpdateDto itemDtoRequest, Integer userId) {
+    public ItemDto updateItem(Long itemId, ItemUpdateDto itemDtoRequest, Long userId) {
         return itemRepository.updateItem(itemId, itemDtoRequest, userId);
     }
 
     @Override
-    public ItemDto getItem(Integer itemId) {
+    public ItemDto getItem(Long itemId) {
         return itemRepository.getItem(itemId);
     }
 
     @Override
-    public List<ItemDto> getOwnerItems(Integer ownerId) {
+    public List<ItemDto> getOwnerItems(Long ownerId) {
         return itemRepository.getOwnerItems(ownerId);
     }
 

@@ -15,7 +15,7 @@ import ru.practicum.shareit.user.model.User;
 @Getter
 @Setter
 public class ItemDto {
-    private Integer id;
+    private Long id;
     private User owner;
     @NotBlank
     private String name;

@@ -9,6 +9,7 @@ import ru.practicum.shareit.item.dto.ItemUpdateDto;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.UserRepository;
 import ru.practicum.shareit.user.model.User;
+import ru.practicum.shareit.exception.ValidationException;
 
 import java.util.*;
 
@@ -17,9 +18,9 @@ import java.util.*;
 public class ItemRepositoryImpl implements ItemRepository {
     private final ItemMapper itemMapper;
     private final UserRepository userRepository;
-    Map<Integer, Item> itemsMap = new HashMap<>();
+    Map<Long, Item> itemsMap = new HashMap<>();
 
-    public ItemDto addItem(ItemDto itemDtoRequest, Integer userId) {
+    public ItemDto addItem(ItemDto itemDtoRequest, Long userId) {
         Optional<User> user = userRepository.getUser(userId);
         if (user.isEmpty()) {
             throw new NotFoundException("User with the given ID was not found.");
@@ -33,27 +34,39 @@ public class ItemRepositoryImpl implements ItemRepository {
         return itemMapper.mapToItemDto(item);
     }
 
-    public ItemDto updateItem(Integer itemId, ItemUpdateDto itemDtoRequest, Integer userId) {
+    public ItemDto updateItem(Long itemId, ItemUpdateDto itemDtoRequest, Long userId) {
         if (!itemsMap.containsKey(itemId)) {
             throw new NotFoundException("Item with the given ID was not found.");
         }
 
-        Long itemsOwnerId = itemsMap.get(itemId).getOwner().getId();
+        Item item = itemsMap.get(itemId);
+
+        if (item.getOwner() == null) {
+            throw new ValidationException("Владелец вещи не указан");
+        }
+
+        Long itemsOwnerId = item.getOwner().getId();
         if (!Objects.equals(itemsOwnerId, userId)) {
             throw new AccessDeniedException("Only the owner can modify the item.");
         }
 
         Item updatedItem = new Item();
+        updatedItem.setId(item.getId());
         updatedItem.setName(itemDtoRequest.getName());
         updatedItem.setDescription(itemDtoRequest.getDescription());
         updatedItem.setAvailable(itemDtoRequest.getAvailable());
+        updatedItem.setOwner(item.getOwner());
+
+        if (itemDtoRequest.getAvailable() != null) {
+            item.setAvailable(itemDtoRequest.getAvailable());
+        }
 
         itemsMap.put(itemId, updatedItem);
 
         return itemMapper.mapToItemDto(updatedItem);
     }
 
-    public ItemDto getItem(Integer itemId) {
+    public ItemDto getItem(Long itemId) {
         if (!itemsMap.containsKey(itemId)) {
             throw new NotFoundException("Item with the given ID was not found.");
         }
@@ -61,7 +74,7 @@ public class ItemRepositoryImpl implements ItemRepository {
         return itemMapper.mapToItemDto(itemsMap.get(itemId));
     }
 
-    public List<ItemDto> getOwnerItems(Integer ownerId) {
+    public List<ItemDto> getOwnerItems(Long ownerId) {
         Collection<Item> allItems = itemsMap.values();
         List<ItemDto> ownerItemsList = new ArrayList<>();
 
@@ -99,11 +112,11 @@ public class ItemRepositoryImpl implements ItemRepository {
         return searchItems;
     }
 
-    private Integer getNextId() {
-        int lastId = itemsMap.values().stream()
-                .mapToInt(Item::getId)
+    public Long getNextId() {
+        return itemsMap.values().stream()
+                .filter(Objects::nonNull)
+                .mapToLong(Item::getId)
                 .max()
-                .orElse(0);
-        return lastId + 1;
+                .orElse(0) + 1;
     }
 }
