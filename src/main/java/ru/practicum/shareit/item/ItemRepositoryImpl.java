@@ -18,16 +18,13 @@ import java.util.*;
 public class ItemRepositoryImpl implements ItemRepository {
     private final ItemMapper itemMapper;
     private final UserRepository userRepository;
-    Map<Long, Item> itemsMap = new HashMap<>();
+    private final Map<Long, Item> itemsMap = new HashMap<>();
 
     public ItemDto addItem(ItemDto itemDtoRequest, Long userId) {
-        Optional<User> user = userRepository.getUser(userId);
-        if (user.isEmpty()) {
-            throw new NotFoundException("User with the given ID was not found.");
-        }
 
+        User user = userRepository.getUser(userId);
         Item item = itemMapper.mapToItem(itemDtoRequest);
-        item.setOwner(user.get());
+        item.setOwner(user);
         item.setId(getNextId());
         itemsMap.put(item.getId(), item);
 

@@ -11,20 +11,20 @@ import java.util.*;
 
 @Service
 public class UserRepositoryImp implements UserRepository {
-    Map<Long, User> users = new HashMap<>();
+    private final Map<Long, User> users = new HashMap<>();
 
     public Collection<User> findAll() {
         return users.values();
     }
 
-    public Optional<User> getUser(long id) {
+    public User getUser(long id) {
         User user = users.get(id);
 
         if (user == null) {
             throw new NotFoundException("Пользователь с id " + id + " не найден");
         }
 
-        return Optional.of(user);
+        return user;
     }
 
     public User create(User user) {

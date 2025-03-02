@@ -7,7 +7,6 @@ import ru.practicum.shareit.user.dto.UserDto;
 import ru.practicum.shareit.user.model.User;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,9 +21,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserDto getUser(long id) {
-        Optional<User> user = repository.getUser(id);
-        if (user.isEmpty()) throw new ValidationException("Пользователь  с id: " + id + " не найден");
-        return userMapper.toUserDto(user.get());
+        return userMapper.toUserDto(repository.getUser(id));
     }
 
     public UserDto create(User user) {
