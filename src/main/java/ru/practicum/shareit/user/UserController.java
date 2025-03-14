@@ -3,12 +3,8 @@ package ru.practicum.shareit.user;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.shareit.user.dto.UserDto;
 import ru.practicum.shareit.user.model.User;
-
-import java.util.List;
 
 /**
  * TODO Sprint add-controllers.
@@ -18,36 +14,28 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
+
     private final UserService userService;
 
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<UserDto> findAll() {
-        return userService.findAll();
-    }
-
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public UserDto getUser(@PathVariable("id") long id) {
-        return userService.getUser(id);
+    public User getUserById(@PathVariable Long id) {
+        return userService.findById(id);
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserDto create(@Valid @RequestBody final User user) {
-        return userService.create(user);
+    public User createUser(@RequestBody @Valid User user) {
+        log.info("creating user with email: " + user.getEmail());
+        return userService.createUser(user);
     }
 
-    @PatchMapping("/{userId}")
-    @ResponseStatus(HttpStatus.OK)
-    public UserDto updateUser(@Valid @RequestBody UserDto user, @PathVariable Long userId) {
-        log.info("update");
-        return userService.update(user, userId);
+    @PatchMapping("/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+        log.info("updating user with id: " + user.getId());
+        return userService.updateUser(id, user);
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id") long id) {
-        userService.delete(id);
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
     }
 }

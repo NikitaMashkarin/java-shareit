@@ -1,27 +1,28 @@
 package ru.practicum.shareit.item.dto;
 
-
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import ru.practicum.shareit.request.ItemRequest;
-import ru.practicum.shareit.user.model.User;
 
 /**
  * TODO Sprint add-controllers.
  */
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class ItemDto {
-    private Long id;
-    private User owner;
-    @NotBlank
-    private String name;
-    @NotBlank
-    private String description;
+
+    @NotEmpty
+    @Size(max = 250)
+    String name;
+    @NotEmpty
+    @Size(max = 250)
+    String description;
     @NotNull
-    private Boolean available;
-    private ItemRequest request;
+    Boolean available;
+    ItemRequest request;
 }

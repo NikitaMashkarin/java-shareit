@@ -2,26 +2,25 @@ package ru.practicum.shareit.booking.dto;
 
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import ru.practicum.shareit.booking.BookingStatus;
+import lombok.experimental.FieldDefaults;
 
 import java.sql.Timestamp;
 
-/**
- * TODO Sprint add-bookings.
- */
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
-@AllArgsConstructor
-public class BookingDto {
+public class BookingRequest {
+
+    @NotNull
+    Long itemId;
+    @NotNull
     @FutureOrPresent
     Timestamp start;
+    @NotNull
     @Future
     Timestamp end;
-    BookingStatus status;
-    Long bookerId;
-    Long itemId;
-    String itemName;
 }
