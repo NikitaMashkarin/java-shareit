@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.practicum.shareit.booking.Booking;
 import ru.practicum.shareit.booking.BookingRepository;
+import ru.practicum.shareit.booking.BookingStatus;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.ValidationException;
 import ru.practicum.shareit.item.dto.CommentDto;
@@ -19,7 +20,9 @@ import ru.practicum.shareit.user.UserRepository;
 import ru.practicum.shareit.user.model.User;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static ru.practicum.shareit.item.mapper.CommentMapper.toCommentDto;
@@ -93,22 +96,19 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public CommentDto makeComment(CommentRequest request, Long itemId, Long userId) {
-        Item item = itemRepository.findById(itemId).orElseThrow(() -> new NotFoundException("Вещь не найдена!"));
-        User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("Пользователь не найден!"));
+        Item item = itemRepository.findById(itemId)
+                .orElseThrow(() -> new NotFoundException("Вещь не найдена!"));
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new NotFoundException("Пользователь не найден!"));
 
-        Timestamp now = Timestamp.valueOf(LocalDate.now().atStartOfDay());
+        Timestamp now = Timestamp.valueOf(LocalDateTime.now());
 
-        Booking booking = bookingRepository.findBookingByItem(item).orElseThrow(()
-                -> new NotFoundException("Бронирование не найдено!"));
-
-        for (Comment comment : commentRepository.findAllByItemId(itemId)) {
-            if (comment.getUser().getId().equals(userId)) {
-                throw new ValidationException("Нельзя оставить отзыв!");
-            }
+        if (!bookingRepository.existsByItemAndBookerAndEndBeforeAndStatus(item, user, now, BookingStatus.APPROVED)) {
+            throw new ValidationException("Пользователь не завершил аренду данной вещи!");
         }
 
-        if (!booking.getBooker().equals(user)) {
-            throw new ValidationException("Пользователь не брал вещь в аренду!");
+        if (commentRepository.existsByItemAndUser(item, user)) {
+            throw new ValidationException("Нельзя оставить отзыв!");
         }
 
         Comment comment = commentRepository.save(new Comment(null, request.getText(), item, user, now));

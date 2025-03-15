@@ -22,10 +22,9 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Slf4j
 public class ItemController {
-
+    public static final String USER_HEADER = "X-Sharer-User-Id";
     private final ItemService itemService;
     private final UserService userService;
-    public static final String USER_HEADER = "X-Sharer-User-Id";
 
     @GetMapping
     Collection<ItemWithComment> getAllItems(@RequestHeader HttpHeaders headers) {

@@ -18,8 +18,8 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Slf4j
 public class BookingController {
-    private final BookingService bookingService;
     public static final String USER_HEADER = "X-Sharer-User-Id";
+    private final BookingService bookingService;
 
     @GetMapping
     public List<Booking> getBookingByBooker(@RequestHeader HttpHeaders headers,
@@ -62,4 +62,5 @@ public class BookingController {
         }
         return bookingService.updateBookingStatus(userId, bookingId, status);
     }
+
 }

@@ -3,6 +3,7 @@ package ru.practicum.shareit.booking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import ru.practicum.shareit.item.model.Item;
+import ru.practicum.shareit.user.model.User;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -41,4 +42,8 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 
     @Query("SELECT min(b.start) FROM Booking b WHERE b.item.id = ?1 AND b.start < CURRENT_TIMESTAMP")
     Timestamp findNextBookingByItem(Long itemId);
+
+    boolean existsByItemAndBookerAndEndBeforeAndStatus(Item item, User user, Timestamp now, BookingStatus bookingStatus);
+
+    //boolean existsByItemAndBookerAndEndBeforeAndStatus(Item item, User user, Timestamp now, BookingStatus bookingStatus);
 }
