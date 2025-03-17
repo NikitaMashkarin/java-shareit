@@ -2,24 +2,22 @@ package ru.practicum.shareit.item.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Size;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+import ru.practicum.shareit.item.model.Item;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Data
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class CommentDto {
 
-    Long id;
-    @Size(max = 250)
-    String text;
-    String authorName;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    Timestamp created;
+    private Long id;
+    private String text;
+    private Item item;
+    private String authorName;
+    private LocalDateTime created;
 }

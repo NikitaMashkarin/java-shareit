@@ -5,24 +5,28 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import ru.practicum.shareit.booking.dto.BookingDto;
 import ru.practicum.shareit.request.ItemRequest;
+import ru.practicum.shareit.user.dto.UserDto;
+
+import java.util.List;
 
 /**
  * TODO Sprint add-controllers.
  */
-@Getter
-@Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Data
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class ItemDto {
 
-    @NotEmpty
-    @Size(max = 250)
-    String name;
-    @NotEmpty
-    @Size(max = 250)
-    String description;
-    @NotNull
-    Boolean available;
-    ItemRequest request;
+    private Long id;
+    private String name;
+    private String description;
+    private Boolean available;
+    private UserDto owner;
+    private BookingDto lastBooking;
+    private BookingDto nextBooking;
+    private List<ItemWithComment> comments;
+    private Long request;
 }

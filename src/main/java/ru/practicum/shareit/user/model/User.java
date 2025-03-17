@@ -9,22 +9,23 @@ import lombok.experimental.FieldDefaults;
 /**
  * TODO Sprint add-controllers.
  */
+@Entity
 @Getter
 @Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
-    @SequenceGenerator(name = "user_seq", sequenceName = "users_id_seq")
-    Long id;
-    @NotEmpty
-    String name;
-    @NotEmpty
-    @Email
-    String email;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "email")
+    private String email;
 }

@@ -1,10 +1,13 @@
 package ru.practicum.shareit.booking;
 
 import jakarta.annotation.Nullable;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.shareit.booking.dto.BookingDto;
 import ru.practicum.shareit.booking.dto.BookingRequest;
 
 import java.util.List;
@@ -16,51 +19,40 @@ import java.util.Objects;
 @RestController
 @RequestMapping(path = "/bookings")
 @RequiredArgsConstructor
-@Slf4j
 public class BookingController {
-    public static final String USER_HEADER = "X-Sharer-User-Id";
+
     private final BookingService bookingService;
 
+    @GetMapping("/{bookingId}")
+    public BookingDto getBookingById(@RequestHeader("X-Sharer-User-Id") Long userId,
+                                     @PathVariable Long bookingId) {
+        return bookingService.getById(userId, bookingId);
+    }
+
     @GetMapping
-    public List<Booking> getBookingByBooker(@RequestHeader HttpHeaders headers,
-                                            @RequestParam @Nullable BookingState state) {
-        Long userId = Long.valueOf(Objects.requireNonNull(headers.get(USER_HEADER)).get(0));
-        return bookingService.getBookingByBooker(userId, state);
+    public List<BookingDto> getAllUserBookings(@RequestHeader("X-Sharer-User-Id") Long userId,
+                                               @RequestParam(required = false) BookingState state) {
+        state = state == null ? BookingState.ALL : state;
+        return bookingService.getAllByState(userId, state);
     }
 
     @GetMapping("/owner")
-    public List<Booking> getBookingByOwner(@RequestHeader HttpHeaders headers,
-                                           @RequestParam @Nullable BookingState state) {
-        Long userId = Long.valueOf(Objects.requireNonNull(headers.get(USER_HEADER)).get(0));
-        return bookingService.getBookingByOwner(userId, state);
-    }
-
-    @GetMapping("/{bookingId}")
-    public Booking getBookingById(@RequestHeader HttpHeaders headers,
-                                  @PathVariable Long bookingId) {
-        Long userId = Long.valueOf(Objects.requireNonNull(headers.get(USER_HEADER)).get(0));
-        return bookingService.getBookingById(userId, bookingId);
+    public List<BookingDto> getAllBookingsByOwner(@RequestHeader("X-Sharer-User-Id") Long userId,
+                                                  @RequestParam(required = false) BookingState state) {
+        state = state == null ? BookingState.ALL : state;
+        return bookingService.getAllByOwnerAndState(userId, state);
     }
 
     @PostMapping
-    public Booking createBooking(@RequestHeader HttpHeaders headers,
-                                 @RequestBody BookingRequest request) {
-        Long userId = Long.valueOf(Objects.requireNonNull(headers.get(USER_HEADER)).get(0));
-        return bookingService.createBooking(userId, request);
+    public BookingDto addBooking(@RequestHeader("X-Sharer-User-Id") Long userId,
+                                 @Valid @RequestBody BookingRequest bookingCreateRequestDto) {
+        return bookingService.create(userId, bookingCreateRequestDto);
     }
 
     @PatchMapping("/{bookingId}")
-    public Booking changeBookingStatus(@RequestHeader HttpHeaders headers,
-                                       @PathVariable Long bookingId,
-                                       @RequestParam Boolean approved) {
-        Long userId = Long.valueOf(Objects.requireNonNull(headers.get(USER_HEADER)).get(0));
-        BookingStatus status;
-        if (approved) {
-            status = BookingStatus.APPROVED;
-        } else {
-            status = BookingStatus.REJECTED;
-        }
-        return bookingService.updateBookingStatus(userId, bookingId, status);
+    public BookingDto setBookingApproval(@RequestHeader("X-Sharer-User-Id") Long userId,
+                                         @PathVariable Long bookingId,
+                                         @RequestParam @NotNull Boolean approved) {
+        return bookingService.setApproval(userId, bookingId, approved);
     }
-
 }

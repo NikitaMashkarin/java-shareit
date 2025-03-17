@@ -1,10 +1,15 @@
 package ru.practicum.shareit.user;
 
+import ch.qos.logback.core.util.StringUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.practicum.shareit.exception.DuplicatedDataException;
 import ru.practicum.shareit.exception.NotFoundException;
+import ru.practicum.shareit.exception.ValidationException;
+import ru.practicum.shareit.user.dto.UserDto;
 import ru.practicum.shareit.user.model.User;
+
+import java.util.List;
 
 
 @Service
@@ -12,44 +17,61 @@ import ru.practicum.shareit.user.model.User;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
     @Override
-    public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new NotFoundException("Пользователь не найден!"));
+    public UserDto getById(Long id) {
+        User userEntity = userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("User not found with id = " + id));
+        return userMapper.toUserDto(userEntity);
     }
 
     @Override
-    public User createUser(User user) {
-        checkUserEmailDuplicate(user);
-
-        return userRepository.save(user);
+    public List<UserDto> getAll() {
+        return userRepository.findAll()
+                .stream()
+                .map(userMapper::toUserDto)
+                .toList();
     }
 
     @Override
-    public User updateUser(Long id, User user) {
-        userRepository.findById(id).orElseThrow(() -> new NotFoundException("Пользователь не найден!"));
-
-        if (user.getEmail() != null) {
-            checkUserEmailDuplicate(user);
+    public UserDto create(UserDto userCreateRequestDto) {
+        if (userRepository.getUserCountByEmail(userCreateRequestDto.getEmail()) > 0) {
+            throw new DuplicatedDataException("Email already exists");
         }
 
-        user.setId(id);
-
-        userRepository.patchUser(user.getEmail(), user.getName(), id);
-
-        return user;
+        User userEntity = userMapper.toUserEntity(userCreateRequestDto);
+        User createdUserEntity = userRepository.save(userEntity);
+        return userMapper.toUserDto(createdUserEntity);
     }
 
     @Override
-    public void deleteUser(Long id) {
-        userRepository.findById(id).orElseThrow(() -> new NotFoundException("Пользователь не найден!"));
+    public UserDto update(Long id, UserDto userUpdateRequestDto) {
+        if (id == null) {
+            throw new ValidationException("Id must not be empty");
+        }
+        if (!userRepository.existsById(id)) {
+            throw new NotFoundException("User not found with id = " + id);
+        }
+        if (userRepository.getUserCountByEmail(userUpdateRequestDto.getEmail()) > 0) {
+            throw new DuplicatedDataException("Email already exists");
+        }
 
+        User userEntity = userMapper.toUserEntity(userUpdateRequestDto);
+        User userEntityForUpdate = userRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("User not found with id = " + id));
+
+        userEntityForUpdate.setName(!StringUtil.isNullOrEmpty(userEntity.getName()) ?
+                userEntity.getName() : userEntityForUpdate.getName());
+        userEntityForUpdate.setEmail(!StringUtil.isNullOrEmpty(userEntity.getEmail()) ?
+                userEntity.getEmail() : userEntityForUpdate.getEmail());
+
+        User updatedUserEntity = userRepository.save(userEntityForUpdate);
+        return userMapper.toUserDto(updatedUserEntity);
+    }
+
+    @Override
+    public void deleteById(Long id) {
         userRepository.deleteById(id);
-    }
-
-    private void checkUserEmailDuplicate(User user) {
-        if (userRepository.findByEmailIgnoreCase(user.getEmail()).isPresent()) {
-            throw new DuplicatedDataException("Пользователь с таким Email уже существует!");
-        }
     }
 }

@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import ru.practicum.shareit.user.model.User;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,16 +19,21 @@ import java.sql.Timestamp;
 public class Comment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_seq")
-    @SequenceGenerator(name = "comment_seq", sequenceName = "comments_id_seq")
-    Long id;
-    String text;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "text")
+    private String text;
+
     @ManyToOne
-    @JoinColumn(name = "item_id", nullable = false)
-    Item item;
+    @JoinColumn(name = "item_id")
+    private Item item;
+
     @ManyToOne
-    @JoinColumn(name = "author_id", nullable = false)
-    User user;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    Timestamp created;
+    @JoinColumn(name = "author_id")
+    private User author;
+
+    @Column(name = "created")
+    private LocalDateTime created;
 }

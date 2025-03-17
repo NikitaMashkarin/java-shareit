@@ -2,6 +2,9 @@ package ru.practicum.shareit.item.mapper;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
 import ru.practicum.shareit.item.dto.ItemDto;
 import ru.practicum.shareit.item.dto.ItemWithComment;
 import ru.practicum.shareit.item.model.Comment;
@@ -11,20 +14,18 @@ import ru.practicum.shareit.user.model.User;
 import java.sql.Timestamp;
 import java.util.List;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class ItemMapper {
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
+        uses = {CommentMapper.class})
+public interface ItemMapper {
 
-    public static Item dtoToItem(User user, ItemDto itemDto) {
-        return new Item(itemDto.getName(),
-                itemDto.getDescription(),
-                itemDto.getAvailable(),
-                user,
-                itemDto.getRequest());
-    }
+    @Mapping(target = "request",
+            expression = "java(itemEntity.getRequest() != null ? itemEntity.getRequest().getId() : null)")
+    ItemDto toItemDto(Item itemEntity);
 
-    public static ItemWithComment toItemWithComment(Item item, List<Comment> comments, Timestamp lastBooking,
-                                                    Timestamp nextBooking) {
-        return new ItemWithComment(item.getId(), item.getName(), item.getDescription(), item.getAvailable(), item.getOwner(),
-                item.getRequest(), lastBooking, nextBooking, comments);
-    }
+    @Mapping(target = "request",
+            expression = "java(itemEntity.getRequest() != null ? itemEntity.getRequest().getId() : null)")
+    ItemDto toItemDto(Item itemEntity, List<Comment> comments);
+
+    @Mapping(target = "request", ignore = true)
+    Item toItemEntity(ItemDto itemDto);
 }

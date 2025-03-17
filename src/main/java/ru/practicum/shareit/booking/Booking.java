@@ -13,31 +13,34 @@ import java.time.LocalDateTime;
 /**
  * TODO Sprint add-bookings.
  */
+@Entity
 @Getter
 @Setter
-@FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-@Table(name = "booking")
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "bookings")
 public class Booking {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "booking_seq")
-    @SequenceGenerator(name = "booking_seq", sequenceName = "booking_id_seq")
-    Long id;
-    @Column(name = "date_begin")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    Timestamp start;
-    @Column(name = "date_end")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    Timestamp end;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "start_date")
+    private LocalDateTime start;
+
+    @Column(name = "end_date")
+    private LocalDateTime end;
+
     @ManyToOne
-    @JoinColumn(name = "item_id", nullable = false)
-    Item item;
+    @JoinColumn(name = "item_id")
+    private Item item;
+
     @ManyToOne
-    @JoinColumn(name = "booker_id", nullable = false)
-    User booker;
-    @Enumerated(EnumType.STRING)
-    BookingStatus status;
+    @JoinColumn(name = "booker_id")
+    private User booker;
+
+    @Column(name = "status")
+    private BookingStatus status;
 }
