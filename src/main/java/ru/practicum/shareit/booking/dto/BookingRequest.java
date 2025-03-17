@@ -1,14 +1,11 @@
 package ru.practicum.shareit.booking.dto;
 
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 import ru.practicum.shareit.booking.BookingStatus;
 import ru.practicum.shareit.user.dto.UserDto;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 

@@ -2,22 +2,13 @@ package ru.practicum.shareit.item;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.item.dto.*;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.item.service.ItemService;
-import org.springframework.http.HttpHeaders;
-import ru.practicum.shareit.user.UserService;
-import ru.practicum.shareit.user.model.User;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
-/**
- * TODO Sprint add-controllers.
- */
 @RestController
 @RequestMapping("/items")
 @RequiredArgsConstructor
@@ -32,8 +23,8 @@ public class ItemController {
 
     @PostMapping
     public ItemDto addItem(@RequestHeader("X-Sharer-User-Id") Long userId,
-                           @Valid @RequestBody ItemDto itemCreateRequestDto) {
-        return itemService.create(userId, itemCreateRequestDto);
+                           @Valid @RequestBody Item item) {
+        return itemService.create(userId, item);
     }
 
     @PatchMapping("/{itemId}")

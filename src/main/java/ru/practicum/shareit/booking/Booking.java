@@ -1,13 +1,10 @@
 package ru.practicum.shareit.booking;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.model.User;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /**

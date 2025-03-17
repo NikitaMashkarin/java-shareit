@@ -1,12 +1,7 @@
 package ru.practicum.shareit.item.dto;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 import ru.practicum.shareit.booking.dto.BookingDto;
-import ru.practicum.shareit.request.ItemRequest;
 import ru.practicum.shareit.user.dto.UserDto;
 
 import java.util.List;

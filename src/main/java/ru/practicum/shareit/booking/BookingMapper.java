@@ -1,7 +1,5 @@
 package ru.practicum.shareit.booking;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import ru.practicum.shareit.booking.dto.BookingDto;

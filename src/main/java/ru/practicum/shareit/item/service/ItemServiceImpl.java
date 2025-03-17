@@ -3,13 +3,10 @@ package ru.practicum.shareit.item.service;
 import ch.qos.logback.core.util.StringUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.practicum.shareit.booking.Booking;
 import ru.practicum.shareit.booking.BookingRepository;
-import ru.practicum.shareit.booking.BookingStatus;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.ValidationException;
 import ru.practicum.shareit.item.dto.CommentDto;
-import ru.practicum.shareit.item.dto.CommentRequest;
 import ru.practicum.shareit.item.dto.ItemWithComment;
 import ru.practicum.shareit.item.mapper.CommentMapper;
 import ru.practicum.shareit.item.mapper.ItemMapper;
@@ -21,9 +18,6 @@ import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.UserRepository;
 import ru.practicum.shareit.user.model.User;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -75,11 +69,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public ItemDto create(Long userId, ItemDto itemCreateRequestDto) {
-        Item itemEntity = itemMapper.toItemEntity(itemCreateRequestDto);
-        itemEntity.setOwner(userRepository.findById(userId)
+    public ItemDto create(Long userId, Item itemCreateRequestDto) {
+        itemCreateRequestDto.setOwner(userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException("User not found with id = " + userId)));
-        Item createdItemEntity = itemRepository.save(itemEntity);
+
+        Item createdItemEntity = itemRepository.save(itemCreateRequestDto);
         return itemMapper.toItemDto(createdItemEntity);
     }
 
@@ -90,7 +84,7 @@ public class ItemServiceImpl implements ItemService {
                 .orElseThrow(() -> new NotFoundException("Item not found with id = " + itemId));
 
         if (!itemEntityForUpdate.getOwner().getId().equals(userId)) {
-            throw new ValidationException("You can only edit your items");
+            throw new NotFoundException("You can only edit your items");
         }
 
         itemEntityForUpdate.setName(!StringUtil.isNullOrEmpty(itemEntity.getName()) ?
