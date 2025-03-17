@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto create(UserDto userCreateRequestDto) {
-        if(userCreateRequestDto.getEmail().isEmpty()) throw new ValidationException("Email ");
+        if (userCreateRequestDto.getEmail().isEmpty()) throw new ValidationException("Email ");
 
         if (userRepository.getUserCountByEmail(userCreateRequestDto.getEmail()) > 0)
             throw new DuplicatedDataException("Email already exists");
