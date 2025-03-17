@@ -1,30 +1,33 @@
 package ru.practicum.shareit.item;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import ru.practicum.shareit.comment.CommentEntity;
+import ru.practicum.shareit.comment.CommentMapper;
+import ru.practicum.shareit.item.dto.ItemCreateRequestDto;
 import ru.practicum.shareit.item.dto.ItemDto;
-import ru.practicum.shareit.item.model.Item;
+import ru.practicum.shareit.item.dto.ItemUpdateRequestDto;
+import ru.practicum.shareit.item.model.ItemEntity;
 
-@Component
-public class ItemMapper {
-    public ItemDto mapToItemDto(Item item) {
-        ItemDto itemDto = new ItemDto();
+import java.util.List;
 
-        itemDto.setId(item.getId());
-        itemDto.setName(item.getName());
-        itemDto.setAvailable(item.getAvailable());
-        itemDto.setDescription(item.getDescription());
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
+        uses = {CommentMapper.class})
+public interface ItemMapper {
 
-        return itemDto;
-    }
+    @Mapping(target = "request",
+            expression = "java(itemEntity.getRequest() != null ? itemEntity.getRequest().getId() : null)")
+    ItemDto toItemDto(ItemEntity itemEntity);
 
-    public Item mapToItem(ItemDto itemDto) {
-        Item item = new Item();
+    @Mapping(target = "request",
+            expression = "java(itemEntity.getRequest() != null ? itemEntity.getRequest().getId() : null)")
+    ItemDto toItemDto(ItemEntity itemEntity, List<CommentEntity> comments);
 
-        item.setId(itemDto.getId());
-        item.setName(itemDto.getName());
-        item.setAvailable(itemDto.getAvailable());
-        item.setDescription(itemDto.getDescription());
+    @Mapping(target = "request", ignore = true)
+    ItemEntity toItemEntity(ItemDto itemDto);
 
-        return item;
-    }
+    ItemEntity toItemEntity(ItemCreateRequestDto itemCreateRequestDto);
+
+    ItemEntity toItemEntity(ItemUpdateRequestDto itemUpdateRequestDto);
 }
