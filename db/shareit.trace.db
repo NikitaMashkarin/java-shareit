@@ -1,0 +1,210 @@
+2025-03-17 17:47:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.id=? [42104-210]
+2025-03-17 17:47:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.id=? [42104-210]
+2025-03-17 17:47:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.id=? [42104-210]
+2025-03-17 17:47:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.id=? [42104-210]
+2025-03-17 17:47:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select ue1_0.id,ue1_0.email,ue1_0.name from users ue1_0 where ue1_0.id=? [42104-210]
+2025-03-17 17:47:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select ue1_0.id,ue1_0.email,ue1_0.name from users ue1_0 where ue1_0.id=? [42104-210]
+2025-03-17 17:47:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select ue1_0.id,ue1_0.email,ue1_0.name from users ue1_0 where ue1_0.id=? [42104-210]
+2025-03-17 17:47:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select ue1_0.id,ue1_0.email,ue1_0.name from users ue1_0 where ue1_0.id=? [42104-210]
+2025-03-17 17:47:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,ie1_0.owner_id,ie1_0.request_id from items ie1_0 where ie1_0.owner_id=? [42104-210]
+2025-03-17 17:47:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,ie1_0.owner_id,ie1_0.request_id from items ie1_0 where (upper(ie1_0.name) like upper(('%'||?||'%')) escape '' or upper(ie1_0.description) like upper(('%'||?||'%')) escape '') and ie1_0.is_available [42104-210]
+2025-03-17 17:47:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,ie1_0.owner_id,ie1_0.request_id from items ie1_0 where (upper(ie1_0.name) like upper(('%'||?||'%')) escape '' or upper(ie1_0.description) like upper(('%'||?||'%')) escape '') and ie1_0.is_available [42104-210]
+2025-03-17 17:47:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKINGS" not found (this database is empty); SQL statement:
+select be1_0.id,b1_0.id,b1_0.email,b1_0.name,be1_0.end_date,i1_0.id,i1_0.is_available,i1_0.description,i1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name,be1_0.start_date,be1_0.status from bookings be1_0 left join users b1_0 on b1_0.id=be1_0.booker_id left join items i1_0 on i1_0.id=be1_0.item_id left join users o1_0 on o1_0.id=i1_0.owner_id left join requests r1_0 on r1_0.id=i1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where be1_0.id=? [42104-210]
+2025-03-17 17:47:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKINGS" not found (this database is empty); SQL statement:
+select be1_0.id,b1_0.id,b1_0.email,b1_0.name,be1_0.end_date,i1_0.id,i1_0.is_available,i1_0.description,i1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name,be1_0.start_date,be1_0.status from bookings be1_0 left join users b1_0 on b1_0.id=be1_0.booker_id left join items i1_0 on i1_0.id=be1_0.item_id left join users o1_0 on o1_0.id=i1_0.owner_id left join requests r1_0 on r1_0.id=i1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where be1_0.id=? [42104-210]
+2025-03-17 17:47:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKINGS" not found (this database is empty); SQL statement:
+select be1_0.id,b1_0.id,b1_0.email,b1_0.name,be1_0.end_date,i1_0.id,i1_0.is_available,i1_0.description,i1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name,be1_0.start_date,be1_0.status from bookings be1_0 left join users b1_0 on b1_0.id=be1_0.booker_id left join items i1_0 on i1_0.id=be1_0.item_id left join users o1_0 on o1_0.id=i1_0.owner_id left join requests r1_0 on r1_0.id=i1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where be1_0.id=? [42104-210]
+2025-03-17 17:47:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "BOOKINGS" not found (this database is empty); SQL statement:
+select be1_0.id,b1_0.id,b1_0.email,b1_0.name,be1_0.end_date,i1_0.id,i1_0.is_available,i1_0.description,i1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name,be1_0.start_date,be1_0.status from bookings be1_0 left join users b1_0 on b1_0.id=be1_0.booker_id left join items i1_0 on i1_0.id=be1_0.item_id left join users o1_0 on o1_0.id=i1_0.owner_id left join requests r1_0 on r1_0.id=i1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where be1_0.id=? [42104-210]
+2025-03-17 17:47:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select ue1_0.id,ue1_0.email,ue1_0.name from users ue1_0 where ue1_0.id=? [42104-210]
+2025-03-17 17:47:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select ue1_0.id,ue1_0.email,ue1_0.name from users ue1_0 where ue1_0.id=? [42104-210]
+2025-03-17 17:47:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
+2025-03-17 17:47:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select count(*) from users ue1_0 where ue1_0.email=? [42104-210]
+2025-03-17 17:47:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ITEMS" not found (this database is empty); SQL statement:
+select ie1_0.id,ie1_0.is_available,ie1_0.description,ie1_0.name,o1_0.id,o1_0.email,o1_0.name,r1_0.id,r1_0.description,r2_0.id,r2_0.email,r2_0.name from items ie1_0 left join users o1_0 on o1_0.id=ie1_0.owner_id left join requests r1_0 on r1_0.id=ie1_0.request_id left join users r2_0 on r2_0.id=r1_0.requestor_id where ie1_0.id=? [42104-210]
