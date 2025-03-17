@@ -2,16 +2,18 @@ package ru.practicum.shareit.user;
 
 import ch.qos.logback.core.util.StringUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ru.practicum.shareit.exception.DuplicatedDataException;
+import ru.practicum.shareit.exception.ConflictException;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.ValidationException;
+import ru.practicum.shareit.user.dto.UserCreateRequestDto;
 import ru.practicum.shareit.user.dto.UserDto;
-import ru.practicum.shareit.user.model.User;
+import ru.practicum.shareit.user.dto.UserUpdateRequestDto;
 
 import java.util.List;
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -21,13 +23,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getById(Long id) {
-        User userEntity = userRepository.findById(id)
+        UserEntity userEntity = userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("User not found with id = " + id));
+        log.debug("Get user with id = {}", id);
         return userMapper.toUserDto(userEntity);
     }
 
     @Override
     public List<UserDto> getAll() {
+        log.debug("Get all users");
         return userRepository.findAll()
                 .stream()
                 .map(userMapper::toUserDto)
@@ -35,20 +39,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto create(UserDto userCreateRequestDto) {
-        if (userCreateRequestDto.getEmail().isEmpty()) throw new ValidationException("Email ");
+    public UserDto create(UserCreateRequestDto userCreateRequestDto) {
+        if (userRepository.getUserCountByEmail(userCreateRequestDto.getEmail()) > 0) {
+            throw new ConflictException("Email already exists");
+        }
 
-        if (userRepository.getUserCountByEmail(userCreateRequestDto.getEmail()) > 0)
-            throw new DuplicatedDataException("Email already exists");
-
-
-        User userEntity = userMapper.toUserEntity(userCreateRequestDto);
-        User createdUserEntity = userRepository.save(userEntity);
+        UserEntity userEntity = userMapper.toUserEntity(userCreateRequestDto);
+        UserEntity createdUserEntity = userRepository.save(userEntity);
+        log.debug("User was created with id = {}", createdUserEntity.getId());
         return userMapper.toUserDto(createdUserEntity);
     }
 
     @Override
-    public UserDto update(Long id, UserDto userUpdateRequestDto) {
+    public UserDto update(Long id, UserUpdateRequestDto userUpdateRequestDto) {
         if (id == null) {
             throw new ValidationException("Id must not be empty");
         }
@@ -56,11 +59,11 @@ public class UserServiceImpl implements UserService {
             throw new NotFoundException("User not found with id = " + id);
         }
         if (userRepository.getUserCountByEmail(userUpdateRequestDto.getEmail()) > 0) {
-            throw new DuplicatedDataException("Email already exists");
+            throw new ConflictException("Email already exists");
         }
 
-        User userEntity = userMapper.toUserEntity(userUpdateRequestDto);
-        User userEntityForUpdate = userRepository.findById(id)
+        UserEntity userEntity = userMapper.toUserEntity(userUpdateRequestDto);
+        UserEntity userEntityForUpdate = userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("User not found with id = " + id));
 
         userEntityForUpdate.setName(!StringUtil.isNullOrEmpty(userEntity.getName()) ?
@@ -68,12 +71,14 @@ public class UserServiceImpl implements UserService {
         userEntityForUpdate.setEmail(!StringUtil.isNullOrEmpty(userEntity.getEmail()) ?
                 userEntity.getEmail() : userEntityForUpdate.getEmail());
 
-        User updatedUserEntity = userRepository.save(userEntityForUpdate);
+        UserEntity updatedUserEntity = userRepository.save(userEntityForUpdate);
+        log.debug("User with id = {} was updated", id);
         return userMapper.toUserDto(updatedUserEntity);
     }
 
     @Override
     public void deleteById(Long id) {
         userRepository.deleteById(id);
+        log.debug("User with id = {} was deleted", id);
     }
 }

@@ -2,19 +2,19 @@ package ru.practicum.shareit.booking;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
+import ru.practicum.shareit.booking.dto.BookingCreateRequestDto;
 import ru.practicum.shareit.booking.dto.BookingDto;
-import ru.practicum.shareit.booking.dto.BookingRequest;
-import ru.practicum.shareit.item.mapper.ItemMapper;
+import ru.practicum.shareit.item.ItemMapper;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,
         uses = {ItemMapper.class})
 public interface BookingMapper {
 
-    BookingRequest toBookingRequestDto(Booking bookingEntity);
+    BookingCreateRequestDto toBookingRequestDto(BookingEntity bookingEntity);
 
-    Booking toBookingEntity(BookingRequest bookingCreateRequestDto);
+    BookingEntity toBookingEntity(BookingCreateRequestDto bookingCreateRequestDto);
 
-    BookingDto toBookingDto(Booking bookingEntity);
+    BookingDto toBookingDto(BookingEntity bookingEntity);
 
-    Booking toBookingEntity(BookingDto bookingDto);
+    BookingEntity toBookingEntity(BookingDto bookingDto);
 }
