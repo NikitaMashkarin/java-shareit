@@ -4,6 +4,7 @@ import ch.qos.logback.core.util.StringUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.shareit.exception.ConflictException;
 import ru.practicum.shareit.exception.NotFoundException;
 import ru.practicum.shareit.exception.ValidationException;
@@ -11,6 +12,8 @@ import ru.practicum.shareit.user.dto.UserCreateRequestDto;
 import ru.practicum.shareit.user.dto.UserDto;
 import ru.practicum.shareit.user.dto.UserUpdateRequestDto;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @Slf4j
@@ -50,6 +53,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.toUserDto(createdUserEntity);
     }
 
+    @Transactional(rollbackFor = {IOException.class, SQLException.class})
     @Override
     public UserDto update(Long id, UserUpdateRequestDto userUpdateRequestDto) {
         if (id == null) {
