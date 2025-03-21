@@ -1,20 +1,23 @@
-package ru.practicum.shareit.user.model;
+package ru.practicum.shareit.user.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-/**
- * TODO Sprint add-controllers.
- */
 @Data
+@Builder
 @AllArgsConstructor
-public class User {
-    private Long id;
+@NoArgsConstructor
+public class UserCreateRequestDto {
+
     @NotBlank
     private String name;
-    @NotBlank
+
     @Email
+    @NotNull
     private String email;
 }
