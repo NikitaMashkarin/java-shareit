@@ -36,5 +36,6 @@ public class BookingEntity {
     private UserEntity booker;
 
     @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private BookingStatus status;
 }
