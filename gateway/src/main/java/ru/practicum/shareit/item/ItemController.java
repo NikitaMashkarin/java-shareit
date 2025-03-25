@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.comment.CommentItemRequestDto;
 import ru.practicum.shareit.item.dto.ItemCreateRequestDto;
@@ -13,7 +12,6 @@ import ru.practicum.shareit.item.dto.ItemUpdateRequestDto;
 @Slf4j
 @RestController
 @RequestMapping("/items")
-@Validated
 @RequiredArgsConstructor
 public class ItemController {
 

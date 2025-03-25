@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.shareit.user.dto.UserCreateRequestDto;
 import ru.practicum.shareit.user.dto.UserUpdateRequestDto;
@@ -12,7 +11,6 @@ import ru.practicum.shareit.user.dto.UserUpdateRequestDto;
 @Slf4j
 @RestController
 @RequestMapping(path = "/users")
-@Validated
 @RequiredArgsConstructor
 public class UserController {
 
